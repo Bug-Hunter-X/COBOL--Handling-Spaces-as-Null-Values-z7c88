@@ -1,0 +1,17 @@
+01 WS-CUSTOMER-NAME PIC X(30).
+01 WS-CUSTOMER-NAME-FLAG PIC 9.
+
+* Initialize flag to indicate that the customer name is missing.
+MOVE 0 TO WS-CUSTOMER-NAME-FLAG.
+
+MOVE SPACES TO WS-CUSTOMER-NAME.
+
+IF WS-CUSTOMER-NAME-FLAG = 0 THEN
+    DISPLAY "Customer name is missing."
+END-IF.
+
+* If Customer Name is received, set the flag to 1
+IF CUSTOMER-NAME-RECEIVED = 'Y' THEN
+  MOVE 1 TO WS-CUSTOMER-NAME-FLAG
+  MOVE CUSTOMER-NAME TO WS-CUSTOMER-NAME
+END-IF.
